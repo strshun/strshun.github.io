@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>angular</title>
+      <link href="/angular/"/>
+      <url>/angular/</url>
+      
+        <content type="html"><![CDATA[<h1 id="测试Helloween"><a href="#测试Helloween" class="headerlink" title="测试Helloween"></a>测试Helloween</h1><pre class="line-numbers language-bash"><code class="language-bash">    <span class="token keyword">function</span> calc<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>        logo<span class="token punctuation">(</span>1<span class="token punctuation">)</span>    <span class="token punctuation">}</span>    console.log<span class="token punctuation">(</span>1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> angular </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>article title</title>
       <link href="/article-title/"/>
       <url>/article-title/</url>

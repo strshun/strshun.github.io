@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>shun</title>
   
-  
+  <subtitle>shun blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://strshun.github.io/"/>
-  <updated>2019-09-05T14:55:12.021Z</updated>
+  <updated>2019-10-17T15:14:02.543Z</updated>
   <id>http://strshun.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>strsh</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>angular</title>
+    <link href="http://strshun.github.io/angular/"/>
+    <id>http://strshun.github.io/angular/</id>
+    <published>2019-09-08T14:49:20.000Z</published>
+    <updated>2019-10-17T15:14:02.543Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;测试Helloween&quot;&gt;&lt;a href=&quot;#测试Helloween&quot; class=&quot;headerlink&quot; title=&quot;测试Helloween&quot;&gt;&lt;/a&gt;测试Helloween&lt;/h1&gt;&lt;pre class=&quot;line-numbers
+        
+      
+    
+    </summary>
+    
+    
+      <category term="前端" scheme="http://strshun.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="angular" scheme="http://strshun.github.io/tags/angular/"/>
+    
+  </entry>
   
   <entry>
     <title>article title</title>
