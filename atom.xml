@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://strshun.github.io/"/>
-  <updated>2019-10-17T15:14:02.543Z</updated>
+  <updated>2019-10-27T05:40:46.743Z</updated>
   <id>http://strshun.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>angular</title>
-    <link href="http://strshun.github.io/angular/"/>
-    <id>http://strshun.github.io/angular/</id>
-    <published>2019-09-08T14:49:20.000Z</published>
-    <updated>2019-10-17T15:14:02.543Z</updated>
+    <title>py</title>
+    <link href="http://strshun.github.io/py/"/>
+    <id>http://strshun.github.io/py/</id>
+    <published>2019-10-26T13:52:47.000Z</published>
+    <updated>2019-10-27T05:40:46.743Z</updated>
     
     <summary type="html">
     
@@ -29,14 +29,72 @@
       
         
         
-          &lt;h1 id=&quot;测试Helloween&quot;&gt;&lt;a href=&quot;#测试Helloween&quot; class=&quot;headerlink&quot; title=&quot;测试Helloween&quot;&gt;&lt;/a&gt;测试Helloween&lt;/h1&gt;&lt;pre class=&quot;line-numbers
+          &lt;h2 id=&quot;Python-基础&quot;&gt;&lt;a href=&quot;#Python-基础&quot; class=&quot;headerlink&quot; title=&quot;Python 基础&quot;&gt;&lt;/a&gt;Python 基础&lt;/h2&gt;&lt;h3 id=&quot;数据类型和变量&quot;&gt;&lt;a href=&quot;#数据类型和变量&quot;
         
       
     
     </summary>
     
     
-      <category term="前端" scheme="http://strshun.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="python" scheme="http://strshun.github.io/categories/python/"/>
+    
+    
+      <category term="python" scheme="http://strshun.github.io/tags/python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AngularPrepare</title>
+    <link href="http://strshun.github.io/angularprepare/"/>
+    <id>http://strshun.github.io/angularprepare/</id>
+    <published>2019-10-24T11:10:01.000Z</published>
+    <updated>2019-10-24T11:10:01.828Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+       
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>angular</title>
+    <link href="http://strshun.github.io/angular/"/>
+    <id>http://strshun.github.io/angular/</id>
+    <published>2019-09-08T14:49:20.000Z</published>
+    <updated>2019-10-24T11:29:41.387Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;推荐编辑器&quot;&gt;&lt;a href=&quot;#推荐编辑器&quot; class=&quot;headerlink&quot; title=&quot;推荐编辑器&quot;&gt;&lt;/a&gt;推荐编辑器&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;VS Code (推荐)&lt;/li&gt;
+&lt;li&gt;webstorm&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1
+        
+      
+    
+    </summary>
+    
+    
+      <category term="工具" scheme="http://strshun.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
       <category term="angular" scheme="http://strshun.github.io/tags/angular/"/>
