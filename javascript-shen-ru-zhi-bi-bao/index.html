@@ -4,17 +4,19 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="angular, shun">
+    <meta name="keywords" content="JavaScript系列8 -- 闭包, shun">
     <meta name="baidu-site-verification" content="2Zrja2fOei">
     <meta name="google-site-verification" content="xxx">
-    <meta name="description" content="推荐编辑器
-VS Code (推荐)
-webstorm
+    <meta name="description" content="JavaScript深入之闭包
+JavaScript深入系列第八篇，介绍理论上的闭包和实践上的闭包，以及从作用域链的角度解析经典的闭包题。
 
-推荐相关插件（基于 vs code ）
-angular extensio pack  will 保哥
-Auto Import （自动引包）
-Auto Rename Tag （修改xm">
+定义MDN 对闭包的定义为：
+
+闭包是指那些能够访问自由变量的函数。
+
+那什么是自由变量呢？
+
+自">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +24,7 @@ Auto Rename Tag （修改xm">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>angular | shun</title>
+    <title>JavaScript系列8 -- 闭包 | shun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -270,13 +272,13 @@ Auto Rename Tag （修改xm">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        angular
+                        JavaScript系列8 -- 闭包
                     </div>
                 </div>
             </div>
@@ -387,8 +389,8 @@ Auto Rename Tag （修改xm">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/angular/" target="_blank">
-                                <span class="chip bg-color">angular</span>
+                            <a href="/tags/JavaScript-面试/" target="_blank">
+                                <span class="chip bg-color">JavaScript 面试</span>
                             </a>
                         
                     </div>
@@ -399,8 +401,8 @@ Auto Rename Tag （修改xm">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/工具/" class="post-category" target="_blank">
-                                工具
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -411,21 +413,21 @@ Auto Rename Tag （修改xm">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-08
+                    2020-03-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        164
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        7 分
                     </div>
                     
                 
@@ -441,21 +443,164 @@ Auto Rename Tag （修改xm">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="推荐编辑器"><a href="#推荐编辑器" class="headerlink" title="推荐编辑器"></a>推荐编辑器</h1><ol>
-<li>VS Code (推荐)</li>
-<li>webstorm</li>
+                <h1 id="JavaScript深入之闭包"><a href="#JavaScript深入之闭包" class="headerlink" title="JavaScript深入之闭包"></a>JavaScript深入之闭包</h1><blockquote>
+<p>JavaScript深入系列第八篇，介绍理论上的闭包和实践上的闭包，以及从作用域链的角度解析经典的闭包题。</p>
+</blockquote>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>MDN 对闭包的定义为：</p>
+<blockquote>
+<p>闭包是指那些能够访问自由变量的函数。</p>
+</blockquote>
+<p>那什么是自由变量呢？</p>
+<blockquote>
+<p>自由变量是指在函数中使用的，但既不是函数参数也不是函数的局部变量的变量。</p>
+</blockquote>
+<p>由此，我们可以看出闭包共有两部分组成：</p>
+<blockquote>
+<p>闭包 = 函数 + 函数能够访问的自由变量</p>
+</blockquote>
+<p>举个例子：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>foo 函数可以访问变量 a，但是 a 既不是 foo 函数的局部变量，也不是 foo 函数的参数，所以 a 就是自由变量。</p>
+<p>那么，函数 foo + foo 函数访问的自由变量 a 不就是构成了一个闭包嘛……</p>
+<p>还真是这样的！</p>
+<p>所以在《JavaScript权威指南》中就讲到：从技术的角度讲，所有的JavaScript函数都是闭包。</p>
+<p>咦，这怎么跟我们平时看到的讲到的闭包不一样呢！？</p>
+<p>别着急，这是理论上的闭包，其实还有一个实践角度上的闭包，让我们看看汤姆大叔翻译的关于闭包的文章中的定义：</p>
+<p>ECMAScript中，闭包指的是：</p>
+<ol>
+<li>从理论角度：所有的函数。因为它们都在创建的时候就将上层上下文的数据保存起来了。哪怕是简单的全局变量也是如此，因为函数中访问全局变量就相当于是在访问自由变量，这个时候使用最外层的作用域。</li>
+<li>从实践角度：以下函数才算是闭包：<ol>
+<li>即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）</li>
+<li>在代码中引用了自由变量</li>
 </ol>
-<h1 id="推荐相关插件（基于-vs-code-）"><a href="#推荐相关插件（基于-vs-code-）" class="headerlink" title="推荐相关插件（基于 vs code ）"></a>推荐相关插件（基于 vs code ）</h1><ol>
-<li>angular extensio pack  will 保哥</li>
-<li>Auto Import （自动引包）</li>
-<li>Auto Rename Tag （修改xml或者html方便自动配置标签）</li>
-<li>Auto Close Tag (自动闭合html标签)</li>
-<li>Prettify JSON （格式化json）</li>
-<li>Path Intellisense （路径提示）</li>
-<li>Beautify (格式化代码，默认快捷键为 ctrl+k+f快捷键可以自定义)</li>
-<li>TSLint // ts（编码约定） 检查代码错误</li>
-<li>Code Spell Checker (拼写检查)</li>
+</li>
 </ol>
+<p>接下来就来讲讲实践上的闭包。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>让我们先写个例子，例子依然是来自《JavaScript权威指南》，稍微做点改动：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"global scope"</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"local scope"</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> scope<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>首先我们要分析一下这段代码中执行上下文栈和执行上下文的变化情况。</p>
+<p>另一个与这段代码相似的例子，在<a href="https://github.com/mqyqingfeng/Blog/issues/8" target="_blank" rel="noopener">《JavaScript深入之执行上下文》</a>中有着非常详细的分析。如果看不懂以下的执行过程，建议先阅读这篇文章。</p>
+<p>这里直接给出简要的执行过程：</p>
+<ol>
+<li>进入全局代码，创建全局执行上下文，全局执行上下文压入执行上下文栈</li>
+<li>全局执行上下文初始化</li>
+<li>执行 checkscope 函数，创建 checkscope 函数执行上下文，checkscope 执行上下文被压入执行上下文栈</li>
+<li>checkscope 执行上下文初始化，创建变量对象、作用域链、this等</li>
+<li>checkscope 函数执行完毕，checkscope 执行上下文从执行上下文栈中弹出</li>
+<li>执行 f 函数，创建 f 函数执行上下文，f 执行上下文被压入执行上下文栈</li>
+<li>f 执行上下文初始化，创建变量对象、作用域链、this等</li>
+<li>f 函数执行完毕，f 函数上下文从执行上下文栈中弹出</li>
+</ol>
+<p>了解到这个过程，我们应该思考一个问题，那就是：</p>
+<p>当 f 函数执行的时候，checkscope 函数上下文已经被销毁了啊(即从执行上下文栈中被弹出)，怎么还会读取到 checkscope 作用域下的 scope 值呢？</p>
+<p>以上的代码，要是转换成 PHP，就会报错，因为在 PHP 中，f 函数只能读取到自己作用域和全局作用域里的值，所以读不到 checkscope 下的 scope 值。(这段我问的PHP同事……)</p>
+<p>然而 JavaScript 却是可以的！</p>
+<p>当我们了解了具体的执行过程后，我们知道 f 执行上下文维护了一个作用域链：</p>
+<pre class="line-numbers language-js"><code class="language-js">fContext <span class="token operator">=</span> <span class="token punctuation">{</span>
+    Scope<span class="token punctuation">:</span> <span class="token punctuation">[</span>AO<span class="token punctuation">,</span> checkscopeContext<span class="token punctuation">.</span>AO<span class="token punctuation">,</span> globalContext<span class="token punctuation">.</span>VO<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>对的，就是因为这个作用域链，f 函数依然可以读取到 checkscopeContext.AO 的值，说明当 f 函数引用了 checkscopeContext.AO 中的值的时候，即使 checkscopeContext 被销毁了，但是 JavaScript 依然会让 checkscopeContext.AO 活在内存中，f 函数依然可以通过 f 函数的作用域链找到它，正是因为 JavaScript 做到了这一点，从而实现了闭包这个概念。</p>
+<p>所以，让我们再看一遍实践角度上闭包的定义：</p>
+<ol>
+<li>即使创建它的上下文已经销毁，它仍然存在（比如，内部函数从父函数中返回）</li>
+<li>在代码中引用了自由变量</li>
+</ol>
+<p>在这里再补充一个《JavaScript权威指南》英文原版对闭包的定义:</p>
+<blockquote>
+<p>This combination of a function object and a scope (a set of variable bindings) in which the function’s variables are resolved is called a closure in the computer science literature.</p>
+</blockquote>
+<p>闭包在计算机科学中也只是一个普通的概念，大家不要去想得太复杂。</p>
+<h2 id="必刷题"><a href="#必刷题" class="headerlink" title="必刷题"></a>必刷题</h2><p>接下来，看这道刷题必刷，面试必考的闭包题：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+data<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>答案是都是 3，让我们分析一下原因：</p>
+<p>当执行到 data[0] 函数之前，此时全局上下文的 VO 为：</p>
+<pre class="line-numbers language-js"><code class="language-js">globalContext <span class="token operator">=</span> <span class="token punctuation">{</span>
+    VO<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        i<span class="token punctuation">:</span> <span class="token number">3</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当执行 data[0] 函数的时候，data[0] 函数的作用域链为：</p>
+<pre class="line-numbers language-js"><code class="language-js">data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>Context <span class="token operator">=</span> <span class="token punctuation">{</span>
+    Scope<span class="token punctuation">:</span> <span class="token punctuation">[</span>AO<span class="token punctuation">,</span> globalContext<span class="token punctuation">.</span>VO<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>data[0]Context 的 AO 并没有 i 值，所以会从 globalContext.VO 中查找，i 为 3，所以打印的结果就是 3。</p>
+<p>data[1] 和 data[2] 是一样的道理。</p>
+<p>所以让我们改成闭包看看：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+data<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+data<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当执行到 data[0] 函数之前，此时全局上下文的 VO 为：</p>
+<pre class="line-numbers language-js"><code class="language-js">globalContext <span class="token operator">=</span> <span class="token punctuation">{</span>
+    VO<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        i<span class="token punctuation">:</span> <span class="token number">3</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>跟没改之前一模一样。</p>
+<p>当执行 data[0] 函数的时候，data[0] 函数的作用域链发生了改变：</p>
+<pre class="line-numbers language-js"><code class="language-js">data<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>Context <span class="token operator">=</span> <span class="token punctuation">{</span>
+    Scope<span class="token punctuation">:</span> <span class="token punctuation">[</span>AO<span class="token punctuation">,</span> 匿名函数Context<span class="token punctuation">.</span>AO globalContext<span class="token punctuation">.</span>VO<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>匿名函数执行上下文的 AO 为：</p>
+<pre class="line-numbers language-js"><code class="language-js">匿名函数Context <span class="token operator">=</span> <span class="token punctuation">{</span>
+    AO<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        arguments<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+            <span class="token number">0</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+            length<span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        i<span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>data[0]Context 的 AO 并没有 i 值，所以会沿着作用域链从匿名函数 Context.AO 中查找，这时候就会找 i 为 0，找到了就不会往 globalContext.VO 中查找了，即使 globalContext.VO 也有 i 的值(值为3)，所以打印的结果就是 0。</p>
+<p>data[1] 和 data[2] 是一样的道理。</p>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/10" target="_blank" rel="noopener">JavaScript深入之参数按值传递</a></p>
+<h2 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h2><p>如果想了解执行上下文的具体变化，不妨循序渐进，阅读这六篇：</p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="noopener">《JavaScript深入之词法作用域和动态作用域》</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">《JavaScript深入之变量对象》</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/6" target="_blank" rel="noopener">《JavaScript深入之作用域链》</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/7" target="_blank" rel="noopener">《JavaScript深入之从ECMAScript规范解读this》</a></p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/8" target="_blank" rel="noopener">《JavaScript深入之执行上下文》</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -508,9 +653,9 @@ Auto Rename Tag （修改xm">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《angular》
+                    《JavaScript系列8 -- 闭包》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/angular/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/javascript-shen-ru-zhi-bi-bao/" property="cc:attributionName"
                rel="cc:attributionURL">
                 strsh
             </a> 采用
@@ -559,7 +704,7 @@ Auto Rename Tag （修改xm">
         repo: 'strshun.github.io',
         owner: 'strshun',
         admin: "strshun",
-        id: 'angular/',
+        id: 'javascript-shen-ru-zhi-bi-bao/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -584,35 +729,44 @@ Auto Rename Tag （修改xm">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/angularprepare/">
+                <a href="/javascript-xi-lie-5-zuo-yong-yu-lian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="AngularPrepare">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JavaScript系列5 -- 作用域链">
                         
-                        <span class="card-title">AngularPrepare</span>
+                        <span class="card-title">JavaScript系列5 -- 作用域链</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+                            JS基础系列
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-10-24
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            strsh
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript-面试/" target="_blank">
+                        <span class="chip bg-color">JavaScript 面试</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -624,35 +778,44 @@ Auto Rename Tag （修改xm">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/article-title/">
+                <a href="/javascript-shen-ru-zhi-bian-liang-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="article title">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JavaScript系列4 -- 变量对象">
                         
-                        <span class="card-title">article title</span>
+                        <span class="card-title">JavaScript系列4 -- 变量对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+                            JS基础系列
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            strsh
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript-面试/" target="_blank">
+                        <span class="chip bg-color">JavaScript 面试</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -805,7 +968,7 @@ Auto Rename Tag （修改xm">
             ShunTao Design &copy; 2019 Implement By Hexo
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">989</span>
+                <span class="white-color">23.4k</span>
             
             <br>
             <span id="sitetime"></span>

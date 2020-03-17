@@ -4,19 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="py, shun">
+    <meta name="keywords" content="JavaScript系列3 -- 执行上下文栈, shun">
     <meta name="baidu-site-verification" content="2Zrja2fOei">
     <meta name="google-site-verification" content="xxx">
-    <meta name="description" content="Python 基础数据类型和变量
-整数
-浮点数
-字符串
-布尔值 True False（请注意大小写）布尔值可以使用 and,or,not 运算
-空值 None
+    <meta name="description" content="JavaScript深入之执行上下文栈
+JavaScript深入系列第三篇，讲解执行上下文栈的是如何执行的，也回答了第二篇中的略难的思考题。
 
-list 和 tuple
-list []
-tuple () 与 list 的主">
+顺序执行？如果要问到 JavaScript 代码执行顺序的话，想必写过 JavaScript 的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +18,7 @@ tuple () 与 list 的主">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>py | shun</title>
+    <title>JavaScript系列3 -- 执行上下文栈 | shun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -272,13 +266,13 @@ tuple () 与 list 的主">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        py
+                        JavaScript系列3 -- 执行上下文栈
                     </div>
                 </div>
             </div>
@@ -389,8 +383,8 @@ tuple () 与 list 的主">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/JavaScript-面试/" target="_blank">
+                                <span class="chip bg-color">JavaScript 面试</span>
                             </a>
                         
                     </div>
@@ -401,8 +395,8 @@ tuple () 与 list 的主">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                python
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -413,21 +407,21 @@ tuple () 与 list 的主">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-26
+                    2020-03-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        596
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        4 分
                     </div>
                     
                 
@@ -443,69 +437,131 @@ tuple () 与 list 的主">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h2><h3 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h3><ul>
-<li>整数</li>
-<li>浮点数</li>
-<li>字符串</li>
-<li>布尔值 True False（请注意大小写）布尔值可以使用 and,or,not 运算</li>
-<li>空值 None</li>
-</ul>
-<h3 id="list-和-tuple"><a href="#list-和-tuple" class="headerlink" title="list 和 tuple"></a>list 和 tuple</h3><ul>
-<li>list []</li>
-<li>tuple () 与 list 的主要区别在于 tuple 初始化后不可以改变</li>
-</ul>
-<h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><pre><code>    age = 3
-    if age &gt;= 18:
-        print('adult')
-    elif age &gt;= 6:
-        print('teenager')
-    else:
-        print('kid')</code></pre><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>Python 的循环有两种</p>
-<ol>
-<li><p>for…in 循环，依次把 list 或 tuple 中的每个元素迭代出来，看例子：</p>
-<pre><code>names = ['Michael', 'Bob', 'Tracy']
-for name in names:
-    print(name)</code></pre><p>Python 提供一个 range()函数，可以生成一个整数序列，再通过 list()函数可以转换为 list。比如 range(5)生成的序列是从 0 开始小于 5 的整数</p>
-</li>
-<li><p>while 循环，只要条件满足，就不断循环，条件不满足时退出循环</p>
-<pre><code>sum = 0
-n = 99
-while n &gt; 0:
-    sum = sum + n
-    n = n - 2
-print(sum)</code></pre></li>
-<li><p>break. 在循环中，break 语句可以提前退出循环</p>
-<pre><code>n = 1
-while n &lt;= 100:
-    if n &gt; 10: # 当n = 11时，条件满足，执行break语句
-        break # break语句会结束当前循环
-    print(n)
-    n = n + 1
-print('END')</code></pre></li>
-<li><p>continue ，跳过当前的这次循环，直接开始下一次循环。</p>
-<pre><code>n = 0
-while n &lt; 10:
-    n = n + 1
-    if n % 2 == 0: # 如果n是偶数，执行continue语句
-        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
-    print(n)</code></pre></li>
-</ol>
-<h3 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h3><ol>
-<li>dict <strong>dict 的 key 必须是不可变对象,包括字符串，整数</strong><br>Python 内置了字典：dict 的支持，dict 全称 dictionary，在其他语言中也称为 map，使用键-值（key-value）存储，具有极快的查找速度。<ul>
-<li>判断 key 是否存在的两种方法 in, get()</li>
-<li>删除 key pop(key),注意对应的 value 也会从 dict 中删除：</li>
-</ul>
-</li>
-<li>set<br>set 和 dict 类似，也是一组 key 的集合，但不存储 value。由于 key 不能重复，所以，在 set 中，没有重复的 key。<br>要创建一个 set，需要提供一个 list 作为输入集合：<ul>
-<li>add(key)</li>
-<li>remove(key)</li>
-</ul>
-</li>
-</ol>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><blockquote>
-<p>要调用一个函数，需要知道函数的名称和参数,比如求绝对值的函数abs，只有一个参数。</p>
+                <h1 id="JavaScript深入之执行上下文栈"><a href="#JavaScript深入之执行上下文栈" class="headerlink" title="JavaScript深入之执行上下文栈"></a>JavaScript深入之执行上下文栈</h1><blockquote>
+<p>JavaScript深入系列第三篇，讲解执行上下文栈的是如何执行的，也回答了第二篇中的略难的思考题。</p>
 </blockquote>
-<p><code>abs(100)</code></p>
+<h2 id="顺序执行？"><a href="#顺序执行？" class="headerlink" title="顺序执行？"></a>顺序执行？</h2><p>如果要问到 JavaScript 代码执行顺序的话，想必写过 JavaScript 的开发者都会有个直观的印象，那就是顺序执行，毕竟：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// foo1</span>
+
+<span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// foo2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然而去看这段代码：</p>
+<pre class="line-numbers language-js"><code class="language-js">
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// foo2</span>
+
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// foo2</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>打印的结果却是两个 <code>foo2</code>。</p>
+<p>刷过面试题的都知道这是因为 JavaScript 引擎并非一行一行地分析和执行程序，而是一段一段地分析执行。当执行一段代码的时候，会进行一个“准备工作”，比如第一个例子中的变量提升，和第二个例子中的函数提升。</p>
+<p>但是本文真正想让大家思考的是：这个“一段一段”中的“段”究竟是怎么划分的呢？</p>
+<p>到底JavaScript引擎遇到一段怎样的代码时才会做“准备工作”呢？</p>
+<h2 id="可执行代码"><a href="#可执行代码" class="headerlink" title="可执行代码"></a>可执行代码</h2><p>这就要说到 JavaScript 的可执行代码(executable code)的类型有哪些了？</p>
+<p>其实很简单，就三种，全局代码、函数代码、eval代码。</p>
+<p>举个例子，当执行到一个函数的时候，就会进行准备工作，这里的“准备工作”，让我们用个更专业一点的说法，就叫做”执行上下文(execution context)”。</p>
+<h2 id="执行上下文栈"><a href="#执行上下文栈" class="headerlink" title="执行上下文栈"></a>执行上下文栈</h2><p>接下来问题来了，我们写的函数多了去了，如何管理创建的那么多执行上下文呢？</p>
+<p>所以 JavaScript 引擎创建了执行上下文栈（Execution context stack，ECS）来管理执行上下文</p>
+<p>为了模拟执行上下文栈的行为，让我们定义执行上下文栈是一个数组：</p>
+<pre class="line-numbers language-js"><code class="language-js">ECStack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>试想当 JavaScript 开始要解释执行代码的时候，最先遇到的就是全局代码，所以初始化的时候首先就会向执行上下文栈压入一个全局执行上下文，我们用 globalContext 表示它，并且只有当整个应用程序结束的时候，ECStack 才会被清空，所以 ECStack 最底部永远有个 globalContext：</p>
+<pre class="line-numbers language-js"><code class="language-js">ECStack <span class="token operator">=</span> <span class="token punctuation">[</span>
+    globalContext
+<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>现在 JavaScript 遇到下面的这段代码了：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">fun3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fun3'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fun3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">fun1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">fun1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当执行一个函数的时候，就会创建一个执行上下文，并且压入执行上下文栈，当函数执行完毕的时候，就会将函数的执行上下文从栈中弹出。知道了这样的工作原理，让我们来看看如何处理上面这段代码：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 伪代码</span>
+
+<span class="token comment" spellcheck="true">// fun1()</span>
+ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>fun1<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// fun1中竟然调用了fun2，还要创建fun2的执行上下文</span>
+ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>fun2<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 擦，fun2还调用了fun3！</span>
+ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>fun3<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// fun3执行完毕</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// fun2执行完毕</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// fun1执行完毕</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// javascript接着执行下面的代码，但是ECStack底层永远有个globalContext</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="解答思考题"><a href="#解答思考题" class="headerlink" title="解答思考题"></a>解答思考题</h2><p>好啦，现在我们已经了解了执行上下文栈是如何处理执行上下文的，所以让我们看看上篇文章<a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="noopener">《JavaScript深入之词法作用域和动态作用域》</a>最后的问题：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"global scope"</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"local scope"</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> scope<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"global scope"</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">var</span> scope <span class="token operator">=</span> <span class="token string">"local scope"</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> scope<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> f<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">checkscope</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>两段代码执行的结果一样，但是两段代码究竟有哪些不同呢？</p>
+<p>答案就是执行上下文栈的变化不一样。</p>
+<p>让我们模拟第一段代码：</p>
+<pre class="line-numbers language-js"><code class="language-js">ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>checkscope<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>f<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>让我们模拟第二段代码：</p>
+<pre class="line-numbers language-js"><code class="language-js">ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>checkscope<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>f<span class="token operator">></span> functionContext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ECStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>是不是有些不同呢？</p>
+<p>当然了，这样概括的回答执行上下文栈的变化不同，是不是依然有一种意犹未尽的感觉呢，为了更详细讲解两个函数执行上的区别，我们需要探究一下执行上下文到底包含了哪些内容，所以欢迎阅读下一篇《JavaScript深入之变量对象》。</p>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/5" target="_blank" rel="noopener">《JavaScript深入之变量对象》</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -558,9 +614,9 @@ while n &lt; 10:
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《py》
+                    《JavaScript系列3 -- 执行上下文栈》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/py/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen-zhan/" property="cc:attributionName"
                rel="cc:attributionURL">
                 strsh
             </a> 采用
@@ -609,7 +665,7 @@ while n &lt; 10:
         repo: 'strshun.github.io',
         owner: 'strshun',
         admin: "strshun",
-        id: 'py/',
+        id: 'javascript-shen-ru-zhi-zhi-xing-shang-xia-wen-zhan/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -634,13 +690,13 @@ while n &lt; 10:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/javascript-xi-lie-2-ci-fa-zuo-yong-yu-he-dong-tai-zuo-yong-yu/">
+                <a href="/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JavaScript系列2 -- 词法作用域和动态作用域">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JavaScript系列7 -- 执行上下文">
                         
-                        <span class="card-title">JavaScript系列2 -- 词法作用域和动态作用域</span>
+                        <span class="card-title">JavaScript系列7 -- 执行上下文</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -683,32 +739,44 @@ while n &lt; 10:
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/javascript-shen-ru-zhi-call-he-apply-de-mo-ni-shi-xian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JavaScript系列10 -- call和apply的模拟实现">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">JavaScript系列10 -- call和apply的模拟实现</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            JS基础系列
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            strsh
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript-面试/" target="_blank">
+                        <span class="chip bg-color">JavaScript 面试</span>
+                    </a>
+                    
                 </div>
                 
             </div>

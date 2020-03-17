@@ -4,19 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="py, shun">
+    <meta name="keywords" content="JavaScript系列9 -- 参数按值传递, shun">
     <meta name="baidu-site-verification" content="2Zrja2fOei">
     <meta name="google-site-verification" content="xxx">
-    <meta name="description" content="Python 基础数据类型和变量
-整数
-浮点数
-字符串
-布尔值 True False（请注意大小写）布尔值可以使用 and,or,not 运算
-空值 None
+    <meta name="description" content="JavaScript深入之参数按值传递
+JavaScript深入系列第九篇，除了按值传递、引用传递，还有第三种传递方式 —— 按共享传递
 
-list 和 tuple
-list []
-tuple () 与 list 的主">
+定义在《JavaScript高级程序设计》第三版 4.1.3，讲到传递参数：
+
+ECMAScript">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +20,7 @@ tuple () 与 list 的主">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>py | shun</title>
+    <title>JavaScript系列9 -- 参数按值传递 | shun</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -272,13 +268,13 @@ tuple () 与 list 的主">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        py
+                        JavaScript系列9 -- 参数按值传递
                     </div>
                 </div>
             </div>
@@ -389,8 +385,8 @@ tuple () 与 list 的主">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/python/" target="_blank">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/JavaScript-面试/" target="_blank">
+                                <span class="chip bg-color">JavaScript 面试</span>
                             </a>
                         
                     </div>
@@ -401,8 +397,8 @@ tuple () 与 list 的主">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category" target="_blank">
-                                python
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -413,21 +409,21 @@ tuple () 与 list 的主">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-10-26
+                    2020-03-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        596
+                        877
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
+                        3 分
                     </div>
                     
                 
@@ -443,69 +439,64 @@ tuple () 与 list 的主">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Python-基础"><a href="#Python-基础" class="headerlink" title="Python 基础"></a>Python 基础</h2><h3 id="数据类型和变量"><a href="#数据类型和变量" class="headerlink" title="数据类型和变量"></a>数据类型和变量</h3><ul>
-<li>整数</li>
-<li>浮点数</li>
-<li>字符串</li>
-<li>布尔值 True False（请注意大小写）布尔值可以使用 and,or,not 运算</li>
-<li>空值 None</li>
-</ul>
-<h3 id="list-和-tuple"><a href="#list-和-tuple" class="headerlink" title="list 和 tuple"></a>list 和 tuple</h3><ul>
-<li>list []</li>
-<li>tuple () 与 list 的主要区别在于 tuple 初始化后不可以改变</li>
-</ul>
-<h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><pre><code>    age = 3
-    if age &gt;= 18:
-        print('adult')
-    elif age &gt;= 6:
-        print('teenager')
-    else:
-        print('kid')</code></pre><h3 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h3><p>Python 的循环有两种</p>
-<ol>
-<li><p>for…in 循环，依次把 list 或 tuple 中的每个元素迭代出来，看例子：</p>
-<pre><code>names = ['Michael', 'Bob', 'Tracy']
-for name in names:
-    print(name)</code></pre><p>Python 提供一个 range()函数，可以生成一个整数序列，再通过 list()函数可以转换为 list。比如 range(5)生成的序列是从 0 开始小于 5 的整数</p>
-</li>
-<li><p>while 循环，只要条件满足，就不断循环，条件不满足时退出循环</p>
-<pre><code>sum = 0
-n = 99
-while n &gt; 0:
-    sum = sum + n
-    n = n - 2
-print(sum)</code></pre></li>
-<li><p>break. 在循环中，break 语句可以提前退出循环</p>
-<pre><code>n = 1
-while n &lt;= 100:
-    if n &gt; 10: # 当n = 11时，条件满足，执行break语句
-        break # break语句会结束当前循环
-    print(n)
-    n = n + 1
-print('END')</code></pre></li>
-<li><p>continue ，跳过当前的这次循环，直接开始下一次循环。</p>
-<pre><code>n = 0
-while n &lt; 10:
-    n = n + 1
-    if n % 2 == 0: # 如果n是偶数，执行continue语句
-        continue # continue语句会直接继续下一轮循环，后续的print()语句不会执行
-    print(n)</code></pre></li>
-</ol>
-<h3 id="dict-和-set"><a href="#dict-和-set" class="headerlink" title="dict 和 set"></a>dict 和 set</h3><ol>
-<li>dict <strong>dict 的 key 必须是不可变对象,包括字符串，整数</strong><br>Python 内置了字典：dict 的支持，dict 全称 dictionary，在其他语言中也称为 map，使用键-值（key-value）存储，具有极快的查找速度。<ul>
-<li>判断 key 是否存在的两种方法 in, get()</li>
-<li>删除 key pop(key),注意对应的 value 也会从 dict 中删除：</li>
-</ul>
-</li>
-<li>set<br>set 和 dict 类似，也是一组 key 的集合，但不存储 value。由于 key 不能重复，所以，在 set 中，没有重复的 key。<br>要创建一个 set，需要提供一个 list 作为输入集合：<ul>
-<li>add(key)</li>
-<li>remove(key)</li>
-</ul>
-</li>
-</ol>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数调用"><a href="#函数调用" class="headerlink" title="函数调用"></a>函数调用</h3><blockquote>
-<p>要调用一个函数，需要知道函数的名称和参数,比如求绝对值的函数abs，只有一个参数。</p>
+                <h1 id="JavaScript深入之参数按值传递"><a href="#JavaScript深入之参数按值传递" class="headerlink" title="JavaScript深入之参数按值传递"></a>JavaScript深入之参数按值传递</h1><blockquote>
+<p>JavaScript深入系列第九篇，除了按值传递、引用传递，还有第三种传递方式 —— 按共享传递</p>
 </blockquote>
-<p><code>abs(100)</code></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在《JavaScript高级程序设计》第三版 4.1.3，讲到传递参数：</p>
+<blockquote>
+<p>ECMAScript中所有函数的参数都是按值传递的。</p>
+</blockquote>
+<p>什么是按值传递呢？</p>
+<blockquote>
+<p>也就是说，把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样。</p>
+</blockquote>
+<h2 id="按值传递"><a href="#按值传递" class="headerlink" title="按值传递"></a>按值传递</h2><p>举个简单的例子：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> value <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    v <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>很好理解，当传递 value 到函数 foo 中，相当于拷贝了一份 value，假设拷贝的这份叫 _value，函数中修改的都是 _value 的值，而不会影响原来的 value 值。</p>
+<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><p>拷贝虽然很好理解，但是当值是一个复杂的数据结构的时候，拷贝就会产生性能上的问题。</p>
+<p>所以还有另一种传递方式叫做按引用传递。</p>
+<p>所谓按引用传递，就是传递对象的引用，函数内部对参数的任何改变都会影响该对象的值，因为两者引用的是同一个对象。</p>
+<p>举个例子：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    o<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 2</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>哎，不对啊，连我们的红宝书都说了 ECMAScript 中所有函数的参数都是按值传递的，这怎么能按引用传递成功呢？</p>
+<p>而这究竟是不是引用传递呢？</p>
+<h2 id="第三种传递方式"><a href="#第三种传递方式" class="headerlink" title="第三种传递方式"></a>第三种传递方式</h2><p>不急，让我们再看个例子：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">1</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    o <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//2</span>
+<span class="token punctuation">}</span>
+<span class="token function">foo</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果 JavaScript 采用的是引用传递，外层的值也会被修改呐，这怎么又没被改呢？所以真的不是引用传递吗？</p>
+<p>这就要讲到其实还有第三种传递方式，叫按共享传递。</p>
+<p>而共享传递是指，在传递对象的时候，传递对象的引用的副本。</p>
+<p><strong>注意： 按引用传递是传递对象的引用，而按共享传递是传递对象的引用的副本！</strong></p>
+<p>所以修改 o.value，可以通过引用找到原值，但是直接修改 o，并不会修改原值。所以第二个和第三个例子其实都是按共享传递。</p>
+<p>最后，你可以这样理解：</p>
+<p>参数如果是基本类型是按值传递，如果是引用类型按共享传递。</p>
+<p>但是因为拷贝副本也是一种值的拷贝，所以在高程中也直接认为是按值传递了。</p>
+<p>所以，高程，谁叫你是红宝书嘞！</p>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/11" target="_blank" rel="noopener">JavaScript深入之call和apply的模拟实现</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -558,9 +549,9 @@ while n &lt; 10:
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《py》
+                    《JavaScript系列9 -- 参数按值传递》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/py/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/javascript-shen-ru-zhi-can-shu-an-zhi-chuan-di/" property="cc:attributionName"
                rel="cc:attributionURL">
                 strsh
             </a> 采用
@@ -609,7 +600,7 @@ while n &lt; 10:
         repo: 'strshun.github.io',
         owner: 'strshun',
         admin: "strshun",
-        id: 'py/',
+        id: 'javascript-shen-ru-zhi-can-shu-an-zhi-chuan-di/',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -634,13 +625,13 @@ while n &lt; 10:
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/javascript-xi-lie-2-ci-fa-zuo-yong-yu-he-dong-tai-zuo-yong-yu/">
+                <a href="/javascript-shen-ru-zhi-bian-liang-dui-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="JavaScript系列2 -- 词法作用域和动态作用域">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="JavaScript系列4 -- 变量对象">
                         
-                        <span class="card-title">JavaScript系列2 -- 词法作用域和动态作用域</span>
+                        <span class="card-title">JavaScript系列4 -- 变量对象</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -683,32 +674,44 @@ while n &lt; 10:
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/javascript-shen-ru-zhi-chuang-jian-dui-xiang-de-duo-chong-fang-shi-yi-ji-you-que-dian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="JavaScript系列14 -- 创建对象的多种方式以及优缺点">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">JavaScript系列14 -- 创建对象的多种方式以及优缺点</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            JS基础系列
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-05
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            strsh
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaScript/" class="post-category" target="_blank">
+                                    JavaScript
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript-面试/" target="_blank">
+                        <span class="chip bg-color">JavaScript 面试</span>
+                    </a>
+                    
                 </div>
                 
             </div>

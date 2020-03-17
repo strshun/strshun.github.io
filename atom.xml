@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://strshun.github.io/"/>
-  <updated>2019-10-27T05:40:46.743Z</updated>
+  <updated>2020-03-17T12:35:37.019Z</updated>
   <id>http://strshun.github.io/</id>
   
   <author>
@@ -15,6 +15,411 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScirpt系列1-- 原型与原型链</title>
+    <link href="http://strshun.github.io/javascirpt-xi-lie-1-yuan-xing-yu-yuan-xing-lian/"/>
+    <id>http://strshun.github.io/javascirpt-xi-lie-1-yuan-xing-yu-yuan-xing-lian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:35:37.019Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript-基础之原型与原型链&quot;&gt;&lt;a href=&quot;#JavaScript-基础之原型与原型链&quot; class=&quot;headerlink&quot; title=&quot;JavaScript 基础之原型与原型链&quot;&gt;&lt;/a&gt;JavaScript
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列5 -- 作用域链</title>
+    <link href="http://strshun.github.io/javascript-xi-lie-5-zuo-yong-yu-lian/"/>
+    <id>http://strshun.github.io/javascript-xi-lie-5-zuo-yong-yu-lian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.954Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之作用域链&quot;&gt;&lt;a href=&quot;#JavaScript深入之作用域链&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列8 -- 闭包</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-bi-bao/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-bi-bao/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.932Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之闭包&quot;&gt;&lt;a href=&quot;#JavaScript深入之闭包&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列4 -- 变量对象</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-bian-liang-dui-xiang/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-bian-liang-dui-xiang/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之变量对象&quot;&gt;&lt;a href=&quot;#JavaScript深入之变量对象&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列9 -- 参数按值传递</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-can-shu-an-zhi-chuan-di/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-can-shu-an-zhi-chuan-di/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之参数按值传递&quot;&gt;&lt;a href=&quot;#JavaScript深入之参数按值传递&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列14 -- 创建对象的多种方式以及优缺点</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-chuang-jian-dui-xiang-de-duo-chong-fang-shi-yi-ji-you-que-dian/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-chuang-jian-dui-xiang-de-duo-chong-fang-shi-yi-ji-you-que-dian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之创建对象的多种方式以及优缺点&quot;&gt;&lt;a href=&quot;#JavaScript深入之创建对象的多种方式以及优缺点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列6 -- 从ECMAScript规范解读this</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-cong-ecmascript-gui-fan-jie-du-this/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-cong-ecmascript-gui-fan-jie-du-this/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之从ECMAScript规范解读this&quot;&gt;&lt;a href=&quot;#JavaScript深入之从ECMAScript规范解读this&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列15 -- 继承的多种方式和优缺点</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-ji-cheng-de-duo-chong-fang-shi-he-you-que-dian/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-ji-cheng-de-duo-chong-fang-shi-he-you-que-dian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.932Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之继承的多种方式和优缺点&quot;&gt;&lt;a href=&quot;#JavaScript深入之继承的多种方式和优缺点&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列13 -- 类数组对象与arguments</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-lei-shu-zu-dui-xiang-yu-arguments/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-lei-shu-zu-dui-xiang-yu-arguments/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.848Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之类数组对象与arguments&quot;&gt;&lt;a href=&quot;#JavaScript深入之类数组对象与arguments&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列7 -- 执行上下文</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.848Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之执行上下文&quot;&gt;&lt;a href=&quot;#JavaScript深入之执行上下文&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列3 -- 执行上下文栈</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen-zhan/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-zhi-xing-shang-xia-wen-zhan/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之执行上下文栈&quot;&gt;&lt;a href=&quot;#JavaScript深入之执行上下文栈&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列10 -- call和apply的模拟实现</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-call-he-apply-de-mo-ni-shi-xian/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-call-he-apply-de-mo-ni-shi-xian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之-call和-apply的模拟实现&quot;&gt;&lt;a href=&quot;#JavaScript深入之-call和-apply的模拟实现&quot; class=&quot;headerlink&quot; title=&quot;JavaScript深入之 call和
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列11 -- bind的模拟实现</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-bind-de-mo-ni-shi-xian/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-bind-de-mo-ni-shi-xian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之-bind的模拟实现&quot;&gt;&lt;a href=&quot;#JavaScript深入之-bind的模拟实现&quot; class=&quot;headerlink&quot; title=&quot;JavaScript深入之 bind的模拟实现&quot;&gt;&lt;/a&gt;JavaScript深入之
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列12 -- new的模拟实现</title>
+    <link href="http://strshun.github.io/javascript-shen-ru-zhi-new-de-mo-ni-shi-xian/"/>
+    <id>http://strshun.github.io/javascript-shen-ru-zhi-new-de-mo-ni-shi-xian/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.847Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之new的模拟实现&quot;&gt;&lt;a href=&quot;#JavaScript深入之new的模拟实现&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript系列2 -- 词法作用域和动态作用域</title>
+    <link href="http://strshun.github.io/javascript-xi-lie-2-ci-fa-zuo-yong-yu-he-dong-tai-zuo-yong-yu/"/>
+    <id>http://strshun.github.io/javascript-xi-lie-2-ci-fa-zuo-yong-yu-he-dong-tai-zuo-yong-yu/</id>
+    <published>2020-03-17T11:41:22.000Z</published>
+    <updated>2020-03-17T12:49:38.846Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;JavaScript深入之词法作用域和动态作用域&quot;&gt;&lt;a href=&quot;#JavaScript深入之词法作用域和动态作用域&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://strshun.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript 面试" scheme="http://strshun.github.io/tags/JavaScript-%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>py</title>
@@ -40,91 +445,6 @@
     
     
       <category term="python" scheme="http://strshun.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AngularPrepare</title>
-    <link href="http://strshun.github.io/angularprepare/"/>
-    <id>http://strshun.github.io/angularprepare/</id>
-    <published>2019-10-24T11:10:01.000Z</published>
-    <updated>2019-10-24T11:10:01.828Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-       
-        
-      
-    
-    </summary>
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>angular</title>
-    <link href="http://strshun.github.io/angular/"/>
-    <id>http://strshun.github.io/angular/</id>
-    <published>2019-09-08T14:49:20.000Z</published>
-    <updated>2019-10-24T11:29:41.387Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h1 id=&quot;推荐编辑器&quot;&gt;&lt;a href=&quot;#推荐编辑器&quot; class=&quot;headerlink&quot; title=&quot;推荐编辑器&quot;&gt;&lt;/a&gt;推荐编辑器&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;VS Code (推荐)&lt;/li&gt;
-&lt;li&gt;webstorm&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1
-        
-      
-    
-    </summary>
-    
-    
-      <category term="工具" scheme="http://strshun.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="angular" scheme="http://strshun.github.io/tags/angular/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>article title</title>
-    <link href="http://strshun.github.io/article-title/"/>
-    <id>http://strshun.github.io/article-title/</id>
-    <published>2019-09-05T14:55:11.000Z</published>
-    <updated>2019-09-05T14:55:12.021Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-       
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
